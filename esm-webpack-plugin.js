@@ -103,8 +103,8 @@ function importsForModule(chunk, pluginOptions) {
             const identifier = `__WEBPACK_EXTERNAL_MODULE_${Template.toIdentifier(`${m.id}`)}__`;
 
             return pluginOptions.esModuleExternals
-                ? `import * as $${identifier} from '${request}'; var ${identifier} = cloneWithEsModuleProperty($${identifier});`
-                : `import * as ${identifier} from '${request}';`
+                ? `import $${identifier} from '${request}'; var ${identifier} = cloneWithEsModuleProperty($${identifier});`
+                : `import ${identifier} from '${request}';`
         })
 
         const result = [importStatements.join("\n")];
