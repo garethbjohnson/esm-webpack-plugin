@@ -101,10 +101,7 @@ function importsForModule(chunk, pluginOptions) {
         const importStatements = externals.map(m => {
             const request = typeof m.request === 'object' ? m.request.amd : m.request;
             const identifier = `__WEBPACK_EXTERNAL_MODULE_${Template.toIdentifier(`${m.id}`)}__`;
-
-            return pluginOptions.esModuleExternals
-                ? `import $${identifier} from '${request}'; var ${identifier} = cloneWithEsModuleProperty($${identifier});`
-                : `import ${identifier} from '${request}';`
+            return `import ${identifier} from '${request}';`
         })
 
         const result = [importStatements.join("\n")];
